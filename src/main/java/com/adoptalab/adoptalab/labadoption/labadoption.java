@@ -18,4 +18,16 @@ public class labadoption {
 
     @Column(name = "Name")
     private String name;
+
+    @Column(name = "Breed")
+    private String breed;
+
+    @Column(name = "Sex")
+    private String sex;
+
+    @Column(name = "Age")
+    private String age;
+
+    @Column(name = "imageUrl")
+    private String imageUrl;
 }
