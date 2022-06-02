@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RestController
-@RequestMapping("api/adoption")
+@RequestMapping("labadoptions")
 public class labadoptionController {
     @Autowired
     private labadoptionService labadoptionService;
