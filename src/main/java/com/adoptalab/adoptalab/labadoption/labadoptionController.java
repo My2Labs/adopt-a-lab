@@ -1,6 +1,7 @@
 package com.adoptalab.adoptalab.labadoption;
 
 import java.util.Map;
+import java.util.HashMap;
 import com.adoptalab.adoptalab.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -35,7 +36,7 @@ public class labadoptionController {
     public Map<String, labadoption> read(@PathVariable Long id) {
         labadoption labadoption = labadoptionService
                 .findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No resource with that ID"));
+                .orElseThrow(() -> new ResourceNotFoundException("No labrador with that ID"));
         return createHashSingular(labadoption);
     }
 
@@ -51,7 +52,7 @@ public class labadoptionController {
     public Map<String, labadoption> update(@RequestBody labadoption labadoption, @PathVariable Long id) {
         labadoption updatedResource = labadoptionService
                 .update(labadoption)
-                .orElseThrow(() -> new ResourceNotFoundException("No resource with that ID"));
+                .orElseThrow(() -> new ResourceNotFoundException("No labrador with that ID"));
         return createHashSingular(updatedResource);
     }
 
