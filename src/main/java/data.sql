@@ -10,7 +10,7 @@ CREATE TABLE puppies(
 );
 
 INSERT INTO puppies(name, breed, sex, age, imageUrl) VALUES ('Freckles', 'Chocolate Labrador Retriever', 'Male', '6 months', 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/10/22/09/chocolate-labrador.jpg?width=1200');
-INSERT INTO puppies(name, breed, sex, age, imageUrl) VALUES ('Rosco', 'Chocolate Labrador Retriever', 'Male', '4', 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/chocolate-labrador-retriever-sergey-ryumin.jpg');
+INSERT INTO puppies(name, breed, sex, age, imageUrl) VALUES ('Rosco', 'Chocolate Labrador Retriever', 'Male', '4', 'https://th.bing.com/th/id/OIP.AQrp4D0YhuWns8OjAn1_AwHaE8?w=258&h=180&c=7&r=0&o=5&pid=1.7');
 INSERT INTO puppies(name, breed, sex, age, imageUrl) VALUES ('Mattie', 'Chocolate Labrador Retriever', 'Female', '1', 'https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/8/2021/10/CLI327.labradors.ChocolateLabsMP_078_FrontCover.jpg');
 INSERT INTO puppies(name, breed, sex, age, imageUrl) VALUES ('Buster', 'Black Labrador Retriever', 'Male', '4', 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/black-labrador-retriever-16-bob-langrish.jpg');
 INSERT INTO puppies(name, breed, sex, age, imageUrl) VALUES ('Star', 'Black Labrador Retriever', 'Female', '1', 'https://i.pinimg.com/originals/6d/5b/90/6d5b90524eb0f0d889abd085e0c823bc.jpg');
