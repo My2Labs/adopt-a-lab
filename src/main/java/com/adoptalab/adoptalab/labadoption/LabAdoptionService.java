@@ -12,19 +12,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class LabAdoptionService {
     @Autowired
-    private LabAdoptionRepository labadoptionRepository;
+    private LabAdoptionRepository labAdoptionRepository;
 
     public Iterable<LabAdoption> list() {
-        return labadoptionRepository.findAll();
+        return labAdoptionRepository.findAll();
 
     }
 
     public Map<String, Iterable<LabAdoption>> search(String searchTerm) {
-        Iterable<LabAdoption> adoptions = labadoptionRepository.findAll();
-        List<LabAdoption> labadoptions = new ArrayList<LabAdoption>();
-        adoptions.forEach(labadoptions::add);
+        Iterable<LabAdoption> adoptions = labAdoptionRepository.findAll();
+        List<LabAdoption> labAdoptions = new ArrayList<LabAdoption>();
+        adoptions.forEach(labAdoptions::add);
 
-        List<LabAdoption> filteredAdoptions = labadoptions.stream().filter(labadoption -> {
+        List<LabAdoption> filteredAdoptions = labAdoptions.stream().filter(labadoption -> {
             return labadoption.getName().equals(searchTerm);
         }).collect(Collectors.toList());
 
@@ -36,19 +36,19 @@ public class LabAdoptionService {
     }
 
     public Optional<LabAdoption> findById(Long id) {
-        return labadoptionRepository.findById(id);
+        return labAdoptionRepository.findById(id);
     }
 
     public LabAdoption create(LabAdoption labadoption) {
-        return labadoptionRepository.save(labadoption);
+        return labAdoptionRepository.save(labadoption);
     }
 
     public Optional<LabAdoption> update(LabAdoption labadoption) {
-        Optional<LabAdoption> foundResource = labadoptionRepository.findById(labadoption.getId());
+        Optional<LabAdoption> foundResource = labAdoptionRepository.findById(labadoption.getId());
         if (foundResource.isPresent()) {
             LabAdoption updatedLabAdoption = foundResource.get();
             updatedLabAdoption.setName(labadoption.getName());
-            labadoptionRepository.save(updatedLabAdoption);
+            labAdoptionRepository.save(updatedLabAdoption);
             return Optional.of(updatedLabAdoption);
         } else {
             return Optional.empty();
@@ -56,6 +56,6 @@ public class LabAdoptionService {
     }
 
     public void deleteById(Long id) {
-        labadoptionRepository.deleteById(id);
+        labAdoptionRepository.deleteById(id);
     }
 }
