@@ -29,10 +29,10 @@ public class labadoption {
     private String age;
 
     @Column(name = "locationcity")
-    private String city;
+    private String locationcity;
 
     @Column(name = "locationstate")
-    private String state;
+    private String locationstate;
 
     @Column(name = "imageUrl")
     private String imageUrl;
