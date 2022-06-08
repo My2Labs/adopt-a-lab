@@ -1,6 +1,11 @@
 package com.adoptalab.adoptalab.labadoption;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +16,23 @@ public class LabAdoptionService {
 
     public Iterable<LabAdoption> list() {
         return labadoptionRepository.findAll();
+
     }
 
-    public Iterable<LabAdoption> search() {
-        return labadoptionRepository.findAll();
+    public Map<String, Iterable<LabAdoption>> search(String searchTerm) {
+        Iterable<LabAdoption> adoptions = labadoptionRepository.findAll();
+        List<LabAdoption> labadoptions = new ArrayList<LabAdoption>();
+        adoptions.forEach(labadoptions::add);
+
+        List<LabAdoption> filteredAdoptions = labadoptions.stream().filter(labadoption -> {
+            return labadoption.getName().equals(searchTerm);
+        }).collect(Collectors.toList());
+
+        return createHashPlural(filteredAdoptions);
+    }
+
+    private Map<String, Iterable<LabAdoption>> createHashPlural(List<LabAdoption> filteredAdoptions) {
+        return null;
     }
 
     public Optional<LabAdoption> findById(Long id) {

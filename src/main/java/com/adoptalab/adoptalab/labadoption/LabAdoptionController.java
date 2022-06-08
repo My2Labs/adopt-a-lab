@@ -28,7 +28,7 @@ public class LabAdoptionController {
     @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Iterable<LabAdoption>> search(@RequestParam String search) {
-        return createHashPlural(labadoptionService.search());
+        return labadoptionService.search(search);
     }
 
     @GetMapping
