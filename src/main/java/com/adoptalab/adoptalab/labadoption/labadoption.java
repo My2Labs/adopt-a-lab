@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "LabAdoption")
+@Table(name = "puppies")
 public class labadoption {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,10 +29,10 @@ public class labadoption {
     private String age;
 
     @Column(name = "locationcity")
-    private String locationcity;
+    private String city;
 
     @Column(name = "locationstate")
-    private String locationstate;
+    private String state;
 
     @Column(name = "imageUrl")
     private String imageUrl;
