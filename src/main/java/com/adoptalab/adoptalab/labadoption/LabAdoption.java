@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "puppies")
-public class labadoption {
+public class LabAdoption {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

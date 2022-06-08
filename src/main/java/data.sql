@@ -11,7 +11,7 @@ CREATE TABLE puppies(
   imageurl TEXT UNIQUE
 );
 
-INSERT INTO puppies(name, breed, sex, age, locationcity, locationstate, imageurl) VALUES ('Freckles', 'Chocolate Labrador Retriever', 'Male', 'Austin', 'TX', '6 months', 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/10/22/09/chocolate-labrador.jpg?width=1200');
+INSERT INTO puppies(name, breed, sex, age, locationcity, locationstate, imageurl) VALUES ('Freckles', 'Chocolate Labrador Retriever', 'Male', '6 months', 'Austin', 'TX', 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/10/22/09/chocolate-labrador.jpg?width=1200');
 INSERT INTO puppies(name, breed, sex, age, locationcity, locationstate, imageurl) VALUES ('Rosco', 'Chocolate Labrador Retriever', 'Male', '4', 'Atlanta', 'GA', 'https://th.bing.com/th/id/OIP.AQrp4D0YhuWns8OjAn1_AwHaE8?w=258&h=180&c=7&r=0&o=5&pid=1.7');
 INSERT INTO puppies(name, breed, sex, age, locationcity, locationstate, imageurl) VALUES ('Mattie', 'Chocolate Labrador Retriever', 'Female', '1', 'Tampa', 'FL', 'https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/8/2021/10/CLI327.labradors.ChocolateLabsMP_078_FrontCover.jpg');
 INSERT INTO puppies(name, breed, sex, age, locationcity, locationstate, imageurl) VALUES ('Buster', 'Black Labrador Retriever', 'Male', '4', 'Louisville', 'KY', 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/black-labrador-retriever-16-bob-langrish.jpg');

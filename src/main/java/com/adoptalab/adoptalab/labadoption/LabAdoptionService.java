@@ -5,26 +5,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class labadoptionService {
+public class LabAdoptionService {
     @Autowired
-    private labadoptionRepository labadoptionRepository;
+    private LabAdoptionRepository labadoptionRepository;
 
-    public Iterable<labadoption> list() {
+    public Iterable<LabAdoption> list() {
         return labadoptionRepository.findAll();
     }
 
-    public Optional<labadoption> findById(Long id) {
+    public Iterable<LabAdoption> search() {
+        return labadoptionRepository.findAll();
+    }
+
+    public Optional<LabAdoption> findById(Long id) {
         return labadoptionRepository.findById(id);
     }
 
-    public labadoption create(labadoption labadoption) {
+    public LabAdoption create(LabAdoption labadoption) {
         return labadoptionRepository.save(labadoption);
     }
 
-    public Optional<labadoption> update(labadoption labadoption) {
-        Optional<labadoption> foundResource = labadoptionRepository.findById(labadoption.getId());
+    public Optional<LabAdoption> update(LabAdoption labadoption) {
+        Optional<LabAdoption> foundResource = labadoptionRepository.findById(labadoption.getId());
         if (foundResource.isPresent()) {
-            labadoption updatedLabAdoption = foundResource.get();
+            LabAdoption updatedLabAdoption = foundResource.get();
             updatedLabAdoption.setName(labadoption.getName());
             labadoptionRepository.save(updatedLabAdoption);
             return Optional.of(updatedLabAdoption);

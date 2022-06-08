@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
@@ -20,21 +21,27 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 @RestController
 @RequestMapping("labadoptions")
-public class labadoptionController {
+public class LabAdoptionController {
     @Autowired
-    private labadoptionService labadoptionService;
+    private LabAdoptionService labadoptionService;
+
+    @GetMapping("/search")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Iterable<LabAdoption>> search(@RequestParam String search) {
+        return createHashPlural(labadoptionService.search());
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Map<String, Iterable<labadoption>> list() {
-        Iterable<labadoption> labadoptions = labadoptionService.list();
+    public Map<String, Iterable<LabAdoption>> list() {
+        Iterable<LabAdoption> labadoptions = labadoptionService.list();
         return createHashPlural(labadoptions);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Map<String, labadoption> read(@PathVariable Long id) {
-        labadoption labadoption = labadoptionService
+    public Map<String, LabAdoption> read(@PathVariable Long id) {
+        LabAdoption labadoption = labadoptionService
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No labrador with that ID"));
         return createHashSingular(labadoption);
@@ -42,15 +49,15 @@ public class labadoptionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Map<String, labadoption> create(@Validated @RequestBody labadoption labadoption) {
-        labadoption createdResource = labadoptionService.create(labadoption);
+    public Map<String, LabAdoption> create(@Validated @RequestBody LabAdoption labadoption) {
+        LabAdoption createdResource = labadoptionService.create(labadoption);
         return createHashSingular(createdResource);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Map<String, labadoption> update(@RequestBody labadoption labadoption, @PathVariable Long id) {
-        labadoption updatedResource = labadoptionService
+    public Map<String, LabAdoption> update(@RequestBody LabAdoption labadoption, @PathVariable Long id) {
+        LabAdoption updatedResource = labadoptionService
                 .update(labadoption)
                 .orElseThrow(() -> new ResourceNotFoundException("No labrador with that ID"));
         return createHashSingular(updatedResource);
@@ -62,14 +69,14 @@ public class labadoptionController {
         labadoptionService.deleteById(id);
     }
 
-    private Map<String, labadoption> createHashSingular(labadoption labadoption) {
-        Map<String, labadoption> response = new HashMap<String, labadoption>();
+    private Map<String, LabAdoption> createHashSingular(LabAdoption labadoption) {
+        Map<String, LabAdoption> response = new HashMap<String, LabAdoption>();
         response.put("labadoption", labadoption);
         return response;
     }
 
-    private Map<String, Iterable<labadoption>> createHashPlural(Iterable<labadoption> labadoptions) {
-        Map<String, Iterable<labadoption>> response = new HashMap<String, Iterable<labadoption>>();
+    private Map<String, Iterable<LabAdoption>> createHashPlural(Iterable<LabAdoption> labadoptions) {
+        Map<String, Iterable<LabAdoption>> response = new HashMap<String, Iterable<LabAdoption>>();
         response.put("labadoptions", labadoptions);
         return response;
     }
