@@ -34,6 +34,6 @@ public class labadoption {
     @Column(name = "locationstate")
     private String state;
 
-    @Column(name = "imageUrl")
+    @Column(name = "imageurl")
     private String imageUrl;
 }
