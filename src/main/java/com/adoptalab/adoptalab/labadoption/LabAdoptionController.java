@@ -23,25 +23,27 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RequestMapping("labadoptions")
 public class LabAdoptionController {
     @Autowired
-    private LabAdoptionService labadoptionService;
+    private LabAdoptionService labAdoptionService;
 
     @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Iterable<LabAdoption>> search(@RequestParam String search) {
-        return labadoptionService.search(search);
+
+        System.out.println(search);
+        return createHashPlural(labAdoptionService.search(search));
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Iterable<LabAdoption>> list() {
-        Iterable<LabAdoption> labadoptions = labadoptionService.list();
-        return createHashPlural(labadoptions);
+        Iterable<LabAdoption> labAdoptions = labAdoptionService.list();
+        return createHashPlural(labAdoptions);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, LabAdoption> read(@PathVariable Long id) {
-        LabAdoption labadoption = labadoptionService
+        LabAdoption labadoption = labAdoptionService
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No labrador with that ID"));
         return createHashSingular(labadoption);
@@ -49,16 +51,17 @@ public class LabAdoptionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Map<String, LabAdoption> create(@Validated @RequestBody LabAdoption labadoption) {
-        LabAdoption createdResource = labadoptionService.create(labadoption);
+    public Map<String, LabAdoption> create(@Validated @RequestBody LabAdoption labAdoption) {
+        LabAdoption createdResource = labAdoptionService.create(labAdoption);
         return createHashSingular(createdResource);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Map<String, LabAdoption> update(@RequestBody LabAdoption labadoption, @PathVariable Long id) {
-        LabAdoption updatedResource = labadoptionService
-                .update(labadoption)
+    public Map<String, LabAdoption> update(@RequestBody LabAdoption labAdoption,
+            @PathVariable Long id) {
+        LabAdoption updatedResource = labAdoptionService
+                .update(labAdoption)
                 .orElseThrow(() -> new ResourceNotFoundException("No labrador with that ID"));
         return createHashSingular(updatedResource);
     }
@@ -66,18 +69,18 @@ public class LabAdoptionController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        labadoptionService.deleteById(id);
+        labAdoptionService.deleteById(id);
     }
 
-    private Map<String, LabAdoption> createHashSingular(LabAdoption labadoption) {
+    private Map<String, LabAdoption> createHashSingular(LabAdoption labAdoption) {
         Map<String, LabAdoption> response = new HashMap<String, LabAdoption>();
-        response.put("labadoption", labadoption);
+        response.put("labadoption", labAdoption);
         return response;
     }
 
-    private Map<String, Iterable<LabAdoption>> createHashPlural(Iterable<LabAdoption> labadoptions) {
+    private Map<String, Iterable<LabAdoption>> createHashPlural(Iterable<LabAdoption> labAdoptions) {
         Map<String, Iterable<LabAdoption>> response = new HashMap<String, Iterable<LabAdoption>>();
-        response.put("labadoptions", labadoptions);
+        response.put("labadoptions", labAdoptions);
         return response;
     }
 }

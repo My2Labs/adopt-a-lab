@@ -16,24 +16,24 @@ public class LabAdoption {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Breed")
+    @Column(name = "breed")
     private String breed;
 
-    @Column(name = "Sex")
+    @Column(name = "sex")
     private String sex;
 
-    @Column(name = "Age")
+    @Column(name = "age")
     private String age;
 
-    @Column(name = "locationcity")
+    @Column(name = "location_city")
     private String city;
 
-    @Column(name = "locationstate")
+    @Column(name = "location_state")
     private String state;
 
-    @Column(name = "imageurl")
+    @Column(name = "image_url")
     private String imageUrl;
 }

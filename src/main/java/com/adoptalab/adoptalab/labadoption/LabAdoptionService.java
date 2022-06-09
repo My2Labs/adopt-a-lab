@@ -2,7 +2,7 @@ package com.adoptalab.adoptalab.labadoption;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -19,7 +19,7 @@ public class LabAdoptionService {
 
   }
 
-  public Map<String, Iterable<LabAdoption>> search(String searchTerm) {
+  public List<LabAdoption> search(String searchTerm) {
     Iterable<LabAdoption> adoptions = labAdoptionRepository.findAll();
     List<LabAdoption> labAdoptions = new ArrayList<LabAdoption>();
     adoptions.forEach(labAdoptions::add);
@@ -29,11 +29,7 @@ public class LabAdoptionService {
       return labadoption.getName().equals(searchTerm);
     }).collect(Collectors.toList());
 
-    return createHashPlural(filteredAdoptions);
-  }
-
-  private Map<String, Iterable<LabAdoption>> createHashPlural(List<LabAdoption> filteredAdoptions) {
-    return null;
+    return filteredAdoptions;
   }
 
   public Optional<LabAdoption> findById(Long id) {
