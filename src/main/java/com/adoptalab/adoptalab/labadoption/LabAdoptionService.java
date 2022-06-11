@@ -29,14 +29,16 @@ public class LabAdoptionService {
       String labname = labadoption.getName().toLowerCase();
       String search = searchTerm.toLowerCase();
       System.out.println(labadoption.getName());
-      return labname.contains(search);
+      return labname.matches("(.*)" + search + "(.*)");
     }).collect(Collectors.toList());
 
     return createHashPlural(filteredAdoptions);
   }
 
   private Map<String, Iterable<LabAdoption>> createHashPlural(List<LabAdoption> filteredAdoptions) {
-    return null;
+    Map<String, Iterable<LabAdoption>> response = new HashMap<String, Iterable<LabAdoption>>();
+    response.put("labadoptions", filteredAdoptions);
+    return response;
   }
 
   public Optional<LabAdoption> findById(Long id) {
