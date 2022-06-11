@@ -29,7 +29,7 @@ public class LabAdoptionService {
       String labname = labadoption.getName().toLowerCase();
       String search = searchTerm.toLowerCase();
       System.out.println(labadoption.getName());
-      return labname.matches("(.*)" + search + "(.*)");
+      return labname.contains(search);
     }).collect(Collectors.toList());
 
     return createHashPlural(filteredAdoptions);
