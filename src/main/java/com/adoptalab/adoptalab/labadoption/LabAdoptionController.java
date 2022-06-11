@@ -30,7 +30,7 @@ public class LabAdoptionController {
     public Map<String, Iterable<LabAdoption>> search(@RequestParam String search) {
 
         System.out.println(search);
-        return createHashPlural(labAdoptionService.search(search));
+        return labAdoptionService.search(search);
     }
 
     @GetMapping
