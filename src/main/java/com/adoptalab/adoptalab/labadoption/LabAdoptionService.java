@@ -35,19 +35,9 @@ public class LabAdoptionService {
     return createHashPlural(filteredAdoptions);
   }
 
-  // public List<LabAdoption> search(String searchTerm) {
-  // Iterable<LabAdoption> adoptions = labAdoptionRepository.findAll();
-  // List<LabAdoption> labAdoptions = new ArrayList<LabAdoption>();
-  // adoptions.forEach(labAdoptions::add);
-
-  // List<LabAdoption> filteredAdoptions =
-  // labAdoptions.stream().filter(labadoption -> {
-  // System.out.println(labadoption.getName());
-  // return labadoption.getName().equals(searchTerm);
-  // }).collect(Collectors.toList());
-
-  // return filteredAdoptions;
-  // }
+  private Map<String, Iterable<LabAdoption>> createHashPlural(List<LabAdoption> filteredAdoptions) {
+    return null;
+  }
 
   public Optional<LabAdoption> findById(Long id) {
     return labAdoptionRepository.findById(id);
