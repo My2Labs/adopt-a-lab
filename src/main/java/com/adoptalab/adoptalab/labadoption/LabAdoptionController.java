@@ -25,6 +25,15 @@ public class LabAdoptionController {
     @Autowired
     private LabAdoptionService labAdoptionService;
 
+    // @GetMapping("/search")
+    // @ResponseStatus(HttpStatus.OK)
+    // public Map<String, Iterable<LabAdoption>> search(@RequestParam String search)
+    // {
+
+    // System.out.println(search);
+    // return createHashPlural(labAdoptionService.search(search));
+    // }
+
     @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Iterable<LabAdoption>> search(@RequestParam String search) {
