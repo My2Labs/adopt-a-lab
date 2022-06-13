@@ -46,9 +46,12 @@ public class LabAdoptionService {
       String statename = labadoption.getState().toLowerCase();
       String cityname = labadoption.getCity().toLowerCase();
       String breed = labadoption.getBreed().toLowerCase();
+      String sex = labadoption.getSex().toLowerCase();
+      String search = searchTerm.toLowerCase();
 
-      return statename.matches(searchTerm.toLowerCase()) || labname.matches(searchTerm.toLowerCase())
-          || cityname.matches(searchTerm.toLowerCase()) || breed.matches(searchTerm.toLowerCase());
+      return statename.matches(searchTerm.toLowerCase()) || labname.matches("(.*)" + search + "(.*)")
+          || cityname.matches(searchTerm.toLowerCase()) || breed.matches("(.*)" + search + "(.*)")
+          || sex.matches(searchTerm.toLowerCase());
 
     }).collect(Collectors.toList());
 
