@@ -20,6 +20,22 @@ public class LabAdoptionService {
 
   }
 
+  // public Map<String, Iterable<LabAdoption>> search(String searchTerm) {
+  // Iterable<LabAdoption> adoptions = labAdoptionRepository.findAll();
+  // List<LabAdoption> labAdoptions = new ArrayList<LabAdoption>();
+  // adoptions.forEach(labAdoptions::add);
+
+  // List<LabAdoption> filteredAdoptions =
+  // labAdoptions.stream().filter(labadoption -> {
+  // String labname = labadoption.getName().toLowerCase();
+  // String search = searchTerm.toLowerCase();
+  // System.out.println(labadoption.getName());
+  // return labname.matches("(.*)" + search + "(.*)");
+  // }).collect(Collectors.toList());
+
+  // return createHashPlural(filteredAdoptions);
+  // }
+
   public Map<String, Iterable<LabAdoption>> search(String searchTerm) {
     Iterable<LabAdoption> adoptions = labAdoptionRepository.findAll();
     List<LabAdoption> labAdoptions = new ArrayList<LabAdoption>();
@@ -27,9 +43,11 @@ public class LabAdoptionService {
 
     List<LabAdoption> filteredAdoptions = labAdoptions.stream().filter(labadoption -> {
       String labname = labadoption.getName().toLowerCase();
-      String search = searchTerm.toLowerCase();
-      System.out.println(labadoption.getName());
-      return labname.matches("(.*)" + search + "(.*)");
+      String statename = labadoption.getState().toLowerCase();
+      String cityname = labadoption.getCity().toLowerCase();
+      return statename.matches(searchTerm.toLowerCase()) || labname.matches(searchTerm.toLowerCase())
+          || cityname.matches(searchTerm.toLowerCase());
+
     }).collect(Collectors.toList());
 
     return createHashPlural(filteredAdoptions);
